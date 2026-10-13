@@ -39,8 +39,8 @@
   ::selection{background:var(--teal-bright);color:var(--ink)}
 
   /* ---------- MASTHEAD ---------- */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:100}
   header.mast{
-    position:fixed;top:0;left:0;right:0;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
     padding:16px clamp(18px,4vw,44px);
     background:rgba(15,20,22,.55);
@@ -68,7 +68,6 @@
 
   /* ---------- TICKER ---------- */
   .ticker{
-    position:fixed;top:63px;left:0;right:0;z-index:99;
     background:var(--teal);color:var(--ink);
     font-family:'Ubuntu';font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
     overflow:hidden;white-space:nowrap;border-bottom:1px solid rgba(0,0,0,.15);
@@ -225,6 +224,8 @@
 </head>
 <body>
 
+<!-- TOP BAR (masthead + ticker fixed together, so the ticker never overlaps a wrapped tagline) -->
+<div class="topbar">
 <!-- MASTHEAD -->
 <header class="mast">
   <a class="brand" href="#top" aria-label="Level Up Fest home">
@@ -253,6 +254,7 @@
     <span>Sat · Nov 21 · 2026</span><span>Werklab · East Van</span><span>100 Spots</span><span>Wellness Breakout Talks 7:00PM</span><span>Healthy Snack Mingle / Sound Bath 8:30PM</span><span>Wellness EDM 9:30PM–1:30AM</span><span>All Proceeds to Charity</span>
     <span>Sat · Nov 21 · 2026</span><span>Werklab · East Van</span><span>100 Spots</span><span>Wellness Breakout Talks 7:00PM</span><span>Healthy Snack Mingle / Sound Bath 8:30PM</span><span>Wellness EDM 9:30PM–1:30AM</span><span>All Proceeds to Charity</span>
   </div>
+</div>
 </div>
 
 <!-- HERO -->
