@@ -208,6 +208,19 @@
   .cause p{font-size:1.18rem;color:var(--light);max-width:640px;margin:0 auto}
   .cause p.sub{color:var(--sage);font-size:1.05rem;margin-top:16px}
 
+  /* ---------- FAQ ---------- */
+  .faq{margin-top:40px}
+  .faq-item{border-top:1px solid rgba(137,190,186,.16)}
+  .faq-item:last-child{border-bottom:1px solid rgba(137,190,186,.16)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 2px;font-family:'Ubuntu';font-weight:500;font-size:clamp(1.05rem,2vw,1.22rem);color:#fff;transition:color .2s}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary:hover{color:var(--teal-bright)}
+  .faq-item .chev{flex:0 0 auto;color:var(--sage);transition:transform .3s}
+  .faq-item[open] summary .chev{transform:rotate(180deg)}
+  .faq-item[open] summary{color:var(--teal-bright)}
+  .faq-a{color:var(--gray);font-size:1.03rem;line-height:1.65;padding:0 2px 26px;max-width:760px}
+  .faq-a a{color:var(--teal-bright);text-decoration:none}
+
   /* ---------- SIGNUP ---------- */
   .signup{position:relative;overflow:hidden;background:
       radial-gradient(80% 120% at 20% 10%,rgba(34,158,163,.4),transparent 55%),
@@ -259,6 +272,7 @@
     <a class="link" href="why.html">Why Level Up Fest</a>
     <a class="link" href="#schedule">Schedule</a>
     <a class="link" href="#who">Who’s There</a>
+    <a class="link" href="#faq">FAQ</a>
     <a class="btn" href="#rsvp">Request Your Spot</a>
   </nav>
 </header>
@@ -374,6 +388,21 @@
     <div class="photo-duo">
       <div class="photo reveal"><img src="assets/parr-cole.jpg" alt="Founders connecting at a Level Up gathering" loading="lazy"></div>
       <div class="photo reveal"><img src="assets/liz-g.jpg" alt="A guest sharing a laugh at a Level Up gathering" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="blk" id="faq">
+  <div class="wrap" style="max-width:880px">
+    <span class="kicker reveal">Good to Know</span>
+    <h2 class="sec reveal">Frequently Asked Questions</h2>
+    <div class="faq">
+      <details class="faq-item reveal"><summary>Is there a bar?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">Not as of now, but you can BYOB and save the money — there’s a fridge :) We’ll have a welcome drink on us.</div></details>
+      <details class="faq-item reveal"><summary>Do I need to know anyone?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">To buy a ticket, yes — we’ve carefully curated the event to match the right people up and make sure we have the right people in the room. If you want to work something out and go solo, call Paul to explore a fit: <a href="tel:+16048093188">604-809-3188</a>.</div></details>
+      <details class="faq-item reveal"><summary>What do I wear, and is there coat check?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">Wear something you can lie down in for the meditation and, of course, dance in. If you feel like bringing a change of clothes, you can do that and even leave it at coat check.</div></details>
+      <details class="faq-item reveal"><summary>Can I just come for the music?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">One ticket covers the whole night. Come when you like, but the earlier part is where you meet people — and later, you party with a little more purpose and connection than the usual show.</div></details>
+      <details class="faq-item reveal"><summary>Where are charity net proceeds going?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">Based on popular vote (when you buy your ticket), we send 100% of net proceeds to the charity the community votes on. We also encourage donating privately to any of these great charities that promote physical, mental, and financial wellness for people in need.</div></details>
     </div>
   </div>
 </section>
