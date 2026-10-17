@@ -56,6 +56,9 @@
   .mast nav{display:flex;align-items:center;gap:26px}
   .mast nav a.link{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);transition:color .25s}
   .mast nav a.link:hover{color:var(--teal-bright)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;color:#fff;padding:6px;flex:0 0 auto}
+  .nav-toggle svg{display:block}
   .btn{
     font-family:'Ubuntu';font-weight:500;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
     padding:11px 22px;border-radius:100px;cursor:pointer;border:0;transition:transform .2s,box-shadow .3s;
@@ -63,7 +66,14 @@
     box-shadow:0 6px 22px -6px rgba(56,214,208,.6);white-space:nowrap;
   }
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -6px rgba(56,214,208,.75)}
-  @media(max-width:860px){.mast nav a.link{display:none}}
+  @media(max-width:860px){
+    header.mast{position:relative}
+    .mast nav{gap:14px}
+    .nav-toggle{display:flex}
+    .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(15,20,22,.98);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid rgba(137,190,186,.18);box-shadow:0 22px 44px -14px rgba(0,0,0,.6);padding:6px 0 12px;display:none;z-index:120}
+    .nav-links.open{display:flex}
+    .nav-links a.link{display:block;padding:15px clamp(18px,5vw,30px);font-size:13px;border-top:1px solid rgba(137,190,186,.08)}
+  }
   @media(max-width:680px){.mast .brand-txt .sub{display:none}}
 
   /* ---------- TICKER ---------- */
@@ -269,19 +279,22 @@
     </span>
   </a>
   <nav>
+    <div class="nav-links">
     <a class="link" href="why.html">Why Level Up Fest</a>
     <a class="link" href="#schedule">Schedule</a>
     <a class="link" href="#who">Who’s There</a>
     <a class="link" href="#faq">FAQ</a>
+    </div>
     <a class="btn" href="#rsvp">Request Your Spot</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </nav>
 </header>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="run">
-    <span>Sat · Nov 21 · 2026</span><span>Werklab · East Van</span><span>100 Spots</span><span>Wellness Breakout Talks 7:00PM</span><span>Healthy Snack Mingle / Sound Bath 8:30PM</span><span>Wellness EDM 9:30PM–1:30AM</span><span>All Proceeds to Charity</span>
-    <span>Sat · Nov 21 · 2026</span><span>Werklab · East Van</span><span>100 Spots</span><span>Wellness Breakout Talks 7:00PM</span><span>Healthy Snack Mingle / Sound Bath 8:30PM</span><span>Wellness EDM 9:30PM–1:30AM</span><span>All Proceeds to Charity</span>
+    <span>Sat · Nov 21 · 2026</span><span>Werklab · East Van</span><span>100 Spots</span><span>Wellness Breakout Talks 7:00PM</span><span>Healthy Snack Mingle / Sound Bath 8:30PM</span><span>Wellness EDM 9:30PM–1:30AM</span><span>100% of Net Proceeds to Charity</span>
+    <span>Sat · Nov 21 · 2026</span><span>Werklab · East Van</span><span>100 Spots</span><span>Wellness Breakout Talks 7:00PM</span><span>Healthy Snack Mingle / Sound Bath 8:30PM</span><span>Wellness EDM 9:30PM–1:30AM</span><span>100% of Net Proceeds to Charity</span>
   </div>
 </div>
 </div>
@@ -300,15 +313,15 @@
       <span class="line l1"><b>Is Yours To Design.</b></span>
     </h1>
     <div class="hero-lede">
-      <p class="lead">A night that re-energizes bold doers through wellness, real connection, and music that puts both hands in the air. One hundred holistically successful people, one room, every dollar to charity.</p>
-      <p>Your party days were never meant to be behind you. They just needed to start working for you.</p>
-      <p class="intro">Three chapters in one night: learn with people worth knowing, ground yourself, then dance like tomorrow’s yours to design.</p>
+      <p class="lead">A night that re-energizes bold doers through wellness, real connection, and music that puts both hands in the air. One hundred holistically successful people, one room, 100% of net proceeds go to charity.</p>
+      <p>Your party days were never meant to be behind you. They just needed to start working for you — party with healthy people and new neural connections. Activate more energy to ignite your purpose.</p>
+      <p class="intro">Three phases, one unforgettable night: discover new ideas, ground yourself with like-minded people, then dance like tomorrow’s yours to design.</p>
       <div class="steps">
         <p><b>Learn.</b> Move between wellness speaker stations with a small group we matched you to.</p>
         <p><b>Ground.</b> Keep the conversation going one room away, or stay and lie down for the sound bath that integrates your learnings.</p>
         <p><b>Dance.</b> The room transforms with local business leaders getting on the DJ decks and spinning progressive, house and bass.</p>
       </div>
-      <p class="close">This is what leveling up through wellness feels like — where your party days never needed to be behind you; they just needed to help you get ahead.</p>
+      <p class="close">This is what wellness feels like when it comes alive — where the right people, energy, and experiences leave you feeling more connected, more alive, and more inspired to live your purpose.</p>
     </div>
     <div class="hero-meta">
       <div class="m"><span class="k">Wellness Workshops</span><span class="v">7:00–8:30 PM</span></div>
@@ -457,6 +470,13 @@
   // Scroll reveal
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Mobile nav toggle
+  const navToggle=document.querySelector('.nav-toggle'),navLinks=document.querySelector('.nav-links');
+  if(navToggle&&navLinks){
+    navToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',o)});
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');navToggle.setAttribute('aria-expanded','false')}));
+  }
 
   // Email capture (no backend — friendly confirmation only)
   const form=document.getElementById('capForm'),ok=document.getElementById('capOk'),email=document.getElementById('email');
