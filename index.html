@@ -478,12 +478,16 @@
     navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');navToggle.setAttribute('aria-expanded','false')}));
   }
 
-  // Email capture (no backend — friendly confirmation only)
+  // Email capture → Google Sheet (Apps Script web app). Paste the /exec URL below to go live.
+  const SIGNUP_ENDPOINT='';
   const form=document.getElementById('capForm'),ok=document.getElementById('capOk'),email=document.getElementById('email');
   form.addEventListener('submit',e=>{
     e.preventDefault();
     const v=email.value.trim();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ok.style.color='var(--rose)';ok.textContent='Hmm — that email looks off. Try again?';return}
+    if(SIGNUP_ENDPOINT){
+      fetch(SIGNUP_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:v,source:location.pathname})}).catch(()=>{});
+    }
     ok.style.color='var(--teal-bright)';
     ok.textContent='✦ You’re on the list. See you Nov 21.';
     form.reset();
