@@ -248,6 +248,16 @@
   .cap-ok{margin-top:18px;color:var(--teal-bright);font-family:'Ubuntu';font-weight:500;letter-spacing:.04em;min-height:22px}
   @media(max-width:560px){form.cap{flex-direction:column;border-radius:24px;padding:12px}form.cap input{padding:12px 16px}form.cap .btn{width:100%}}
 
+  /* ---------- SPONSORS ---------- */
+  .sponsors{padding:38px clamp(18px,4vw,44px) 30px;background:var(--ink);border-top:1px solid rgba(137,190,186,.1)}
+  .sponsors .wrap{max-width:var(--maxw);margin:0 auto;text-align:center}
+  .sponsors .lbl{display:block;font-family:'Ubuntu';font-weight:700;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#5f6b6c;margin-bottom:18px}
+  .sponsors .row{display:flex;align-items:center;justify-content:center;gap:clamp(24px,5vw,48px);flex-wrap:wrap}
+  .sponsors .row img{display:block;width:auto;opacity:.68;transition:opacity .25s}
+  .sponsors .row a:hover img,.sponsors .row .cover:hover img{opacity:1}
+  .sponsors .lum img{height:30px}
+  .sponsors .cover img{height:40px;border-radius:8px}
+
   /* ---------- FOOTER ---------- */
   footer{padding:56px clamp(18px,4vw,44px) 40px;border-top:1px solid rgba(137,190,186,.16);background:var(--ink)}
   .foot-inner{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:flex-start}
@@ -435,6 +445,17 @@
   </div>
 </section>
 </main>
+
+<!-- SPONSORS -->
+<section class="sponsors">
+  <div class="wrap">
+    <span class="lbl">Our Sponsors</span>
+    <div class="row">
+      <a class="lum" href="https://www.levelupmortgages.com" target="_blank" rel="noopener" aria-label="Level Up Mortgages"><img src="assets/sponsor-lum.png" alt="Level Up Mortgages" loading="lazy"></a>
+      <span class="cover"><img src="assets/sponsor-glfm.webp" alt="Grind Less Flow More — with Paul Davidescu" loading="lazy"></span>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
