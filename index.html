@@ -311,7 +311,7 @@
     <a class="link" href="#who">Who’s There</a>
     <a class="link" href="#faq">FAQ</a>
     </div>
-    <a class="btn" href="#rsvp">Request Your Spot</a>
+    <a class="btn" href="/tickets" target="_blank" rel="noopener">Request Your Spot</a>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </nav>
 </header>
@@ -355,7 +355,7 @@
       <div class="m"><span class="k">Main Show</span><span class="v">9:30PM – 1:30AM</span></div>
     </div>
     <div class="hero-cta">
-      <a class="btn" href="#rsvp">Claim Early Access</a>
+      <a class="btn" href="/tickets" target="_blank" rel="noopener">Get Tickets</a>
       <a class="btn-ghost" href="#schedule">See How the Night Works ↓</a>
       <a class="btn-ghost" href="why.html">Why Level Up Fest →</a>
     </div>
@@ -449,15 +449,11 @@
 <!-- SIGNUP -->
 <section class="blk signup" id="rsvp">
   <div class="signup-inner">
-    <span class="kicker reveal" style="justify-content:center">Be First Through the Door</span>
-    <h2 class="reveal">Get on the <span class="grad">List.</span></h2>
-    <p class="reveal">Drop your email for early access, ticket drops, lineup reveals, and the wellness brands joining us. No spam — just the good stuff before it goes public.</p>
-    <form class="cap reveal" id="capForm" novalidate>
-      <input type="email" id="email" placeholder="you@example.com" aria-label="Email address" required>
-      <button class="btn" type="submit">Notify Me</button>
-    </form>
-    <div class="cap-ok" id="capOk" role="status" aria-live="polite"></div>
-    <p class="cap-note reveal">Sat, Nov 21, 2026 · Werklab, East Van · Presented by Level Up Mortgages</p>
+    <span class="kicker reveal" style="justify-content:center">100 Spots · 100% of Net Proceeds to Charity</span>
+    <h2 class="reveal">Claim Your <span class="grad">Spot.</span></h2>
+    <p class="reveal">Tickets are live. One ticket covers the whole night — the breakout talks, the sound bath, and the show. Grab yours before the room fills.</p>
+    <div class="reveal" style="margin-top:6px"><a class="btn" href="/tickets" target="_blank" rel="noopener" style="font-size:14px;padding:16px 36px">Get Tickets →</a></div>
+    <p class="cap-note reveal" style="margin-top:22px">Sat, Nov 21, 2026 · Werklab, East Van · Presented by Level Up Mortgages</p>
   </div>
 </section>
 </main>
@@ -515,20 +511,6 @@
     navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');navToggle.setAttribute('aria-expanded','false')}));
   }
 
-  // Email capture → Google Sheet (Apps Script web app). Paste the /exec URL below to go live.
-  const SIGNUP_ENDPOINT='';
-  const form=document.getElementById('capForm'),ok=document.getElementById('capOk'),email=document.getElementById('email');
-  form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const v=email.value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ok.style.color='var(--rose)';ok.textContent='Hmm — that email looks off. Try again?';return}
-    if(SIGNUP_ENDPOINT){
-      fetch(SIGNUP_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({email:v,source:location.pathname})}).catch(()=>{});
-    }
-    ok.style.color='var(--teal-bright)';
-    ok.textContent='✦ You’re on the list. See you Nov 21.';
-    form.reset();
-  });
 </script>
 </body>
 </html>
