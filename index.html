@@ -185,6 +185,30 @@
   .slot .body p:last-child{margin-bottom:0}
   @media(max-width:640px){.slot{grid-template-columns:1fr;gap:8px}.slot .time{font-size:1.25rem}}
 
+  /* ---------- LINEUP ---------- */
+  .lineup-sec{background:linear-gradient(180deg,var(--night-2),var(--night))}
+  .lineup-sub{font-family:'Ubuntu';font-weight:700;font-size:clamp(1.05rem,2.3vw,1.45rem);color:var(--teal-bright);text-transform:uppercase;letter-spacing:.03em;margin:56px 0 24px}
+  .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:860px){.p-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.p-grid{grid-template-columns:1fr}}
+  .pcard{display:flex;flex-direction:column;background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(137,190,186,.16);border-radius:18px;overflow:hidden;transition:border-color .3s,transform .3s}
+  .pcard:hover{border-color:rgba(56,214,208,.42);transform:translateY(-4px)}
+  .pcard .ph{aspect-ratio:4/5;background:var(--night-2);overflow:hidden}
+  .pcard .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .pcard .ph.soon{display:grid;place-items:center;text-align:center}
+  .pcard .ph.soon span{font-family:'Ubuntu';font-weight:700;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);opacity:.65}
+  .pcard .pb{padding:20px 20px 24px;display:flex;flex-direction:column;flex:1}
+  .pcard .pchips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+  .pchip{font-family:'Ubuntu';font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;white-space:nowrap}
+  .pchip.t{background:rgba(56,214,208,.14);color:var(--teal-bright);border:1px solid rgba(56,214,208,.35)}
+  .pchip.g{background:rgba(233,162,75,.14);color:var(--amber);border:1px solid rgba(233,162,75,.35)}
+  .pchip.r{background:rgba(137,190,186,.12);color:var(--sage);border:1px solid rgba(137,190,186,.3)}
+  .pcard h4{font-family:'Ubuntu';font-weight:700;font-size:1.12rem;color:#fff;margin-bottom:9px;line-height:1.15}
+  .pcard p{font-size:.9rem;color:var(--gray);margin-bottom:10px}
+  .pcard p.about{font-size:.84rem;color:#8a938f;margin-top:auto}
+  .pcard a.sc{display:inline-flex;align-items:center;gap:7px;font-family:'Ubuntu';font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-bright);margin-top:4px}
+  .pcard a.sc:hover{color:#fff}
+
   /* ---------- CROWD / WHO ---------- */
   .who-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;margin-top:20px}
   .who-copy p{font-size:1.12rem;color:var(--light);margin-bottom:18px}
@@ -308,6 +332,7 @@
     <div class="nav-links">
     <a class="link" href="why.html">Why Level Up Fest</a>
     <a class="link" href="#schedule">Schedule</a>
+    <a class="link" href="#lineup">Lineup</a>
     <a class="link" href="#who">Who’s There</a>
     <a class="link" href="#faq">FAQ</a>
     </div>
@@ -402,6 +427,71 @@
 <section class="photo-hero">
   <img src="assets/werklab-rave.webp" alt="The Level Up Fest dance floor in full swing at Werklab" loading="lazy">
   <div class="cap"><div class="k">Werklab · East Van</div><div class="t">Where the night peaks.</div></div>
+</section>
+
+<!-- LINEUP -->
+<section class="blk lineup-sec" id="lineup">
+  <div class="wrap">
+    <span class="kicker reveal">The Lineup</span>
+    <h2 class="sec reveal">Artists &amp; Speaker Stations</h2>
+
+    <h3 class="lineup-sub reveal">Holistic Success Speaker Stations</h3>
+    <div class="p-grid">
+      <div class="pcard reveal">
+        <div class="ph"><img src="assets/speaker-shawn.jpg" alt="Shawn Price" loading="lazy" style="object-position:center center"></div>
+        <div class="pb">
+          <div class="pchips"><span class="pchip r">A.I Hygiene &amp; Financial Wellness</span></div>
+          <h4>Shawn Price</h4>
+          <p>Shawn covers a unique angle on using A.I while preserving your cognitive security and creativity — and how A.I can ease anxiety around finances, so you spend more time earning than stressing. His goal: prompt you to ask the right questions and share how you approach it with your curated squad.</p>
+          <p class="about"><strong style="color:#aeb8b6">About:</strong> 20+ years shipping software as an engineer, engineering manager, CTO, and technical founder. Shawn builds with AI tools every day, including his own products, and has completed the full Co-Active coach training.</p>
+        </div>
+      </div>
+      <div class="pcard reveal">
+        <div class="ph soon"><span>Coming Soon</span></div>
+        <div class="pb"><div class="pchips"><span class="pchip r">Physical Wellness</span></div><h4>Speaker — Coming Soon</h4>
+          <p>This speaker will cover a unique angle on improving your physical wellness. Their goal: prompt you to ask the right questions and share how you best approach it with your curated squad.</p></div>
+      </div>
+      <div class="pcard reveal">
+        <div class="ph soon"><span>Coming Soon</span></div>
+        <div class="pb"><div class="pchips"><span class="pchip r">Mental Wellness</span></div><h4>Speaker — Coming Soon</h4>
+          <p>This speaker will cover a unique angle on improving your mental wellness. Their goal: prompt you to ask the right questions and share how you best approach it with your curated squad.</p></div>
+      </div>
+    </div>
+
+    <h3 class="lineup-sub reveal">Artists</h3>
+    <div class="p-grid">
+      <div class="pcard reveal">
+        <div class="ph"><img src="assets/artist-oceanfox.webp" alt="Charles OceanFox Morgan" loading="lazy" style="object-position:center 16%"></div>
+        <div class="pb">
+          <div class="pchips"><span class="pchip t">9:30–10:30 PM</span><span class="pchip g">Afro House</span></div>
+          <h4>Charles “OceanFox” Morgan</h4>
+          <p>A scientist-musician who builds every track he plays, tuning frequencies and polyrhythms on purpose. Chief Meditation Officer at Burning Man’s Buddha Lounge and author of the forthcoming <em>DONTPUNKOUT</em>. He runs Sonic Acupunkture at 8:30, then opens the floor at 9:30 with Afro house.</p>
+        </div>
+      </div>
+      <div class="pcard reveal">
+        <div class="ph"><img src="assets/artist-oyzo.webp" alt="Steve Krueger — Oyzo" loading="lazy" style="object-position:center 20%"></div>
+        <div class="pb">
+          <div class="pchips"><span class="pchip t">10:30–11:30 PM</span><span class="pchip g">Disco House</span></div>
+          <h4>Steve Krueger <span style="color:var(--sage);font-weight:500">· Oyzo</span></h4>
+          <p>Born and raised on grunge, punk, and hardstyle beats, Steve pushes the boundaries of what 130 BPM can do to a dance floor — and what an entrepreneur and dad can do for everyone around them. A natural leader, musician, athlete, and all-around superhuman.</p>
+        </div>
+      </div>
+      <div class="pcard reveal">
+        <div class="ph"><img src="assets/artist-jonsevy.webp" alt="Jon Sevy" loading="lazy" style="object-position:center 12%"></div>
+        <div class="pb">
+          <div class="pchips"><span class="pchip t">11:30 PM–12:30 AM</span><span class="pchip g">Melodic House</span></div>
+          <h4>Jon Sevy</h4>
+          <p>A local artist who’s been DJing and producing progressive house for over a decade. Jon draws on his time in the record-label world — Monstercat, Silk, and Ministry of Sound.</p>
+          <a class="sc" href="https://on.soundcloud.com/Qytk13YW8nskx9JmYa" target="_blank" rel="noopener">Listen on SoundCloud →</a>
+        </div>
+      </div>
+      <div class="pcard reveal">
+        <div class="ph soon"><span>To Be Revealed</span></div>
+        <div class="pb"><div class="pchips"><span class="pchip t">12:30 AM Onwards</span></div><h4>Surprise Guest</h4>
+          <p>Stay to the end — we’re closing the night with a special guest we can’t announce just yet.</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- WHO -->
