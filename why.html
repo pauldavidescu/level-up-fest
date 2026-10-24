@@ -166,15 +166,13 @@
   .pill h3{font-weight:700;font-size:1.3rem;color:#fff;margin-bottom:9px;text-transform:uppercase;letter-spacing:.01em}
   .pill p{font-size:.98rem;color:var(--gray)}
   .pill .tag{position:absolute;top:22px;right:22px;font-family:'Ubuntu';font-weight:700;font-size:11px;letter-spacing:.14em;color:rgba(137,190,186,.4)}
-  .hosts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
-  @media(max-width:820px){.hosts{grid-template-columns:1fr}}
-  .host{display:flex;gap:20px;padding:30px 28px;border-radius:20px;background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(137,190,186,.16);transition:transform .35s,border-color .35s}
-  .host:hover{transform:translateY(-5px);border-color:rgba(56,214,208,.5)}
-  .h-av{flex:0 0 64px;width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#143b3d,#0f2a2c);border:1px solid rgba(56,214,208,.3)}
-  .h-av span{font-family:'Ubuntu';font-weight:700;font-size:1.4rem;color:var(--teal-bright)}
-  .h-role{font-family:'Ubuntu';font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
-  .host h3{font-family:'Ubuntu';font-weight:700;font-size:1.25rem;color:#fff;margin:7px 0 10px}
-  .host p{font-size:.95rem;color:var(--gray)}
+  .creator{display:grid;grid-template-columns:minmax(240px,400px) 1fr;gap:36px;align-items:center;margin-top:44px;padding-top:40px;border-top:1px solid rgba(137,190,186,.14)}
+  @media(max-width:760px){.creator{grid-template-columns:1fr;gap:22px}}
+  .cr-photo{border-radius:18px;overflow:hidden;aspect-ratio:3/2;background:var(--night-2);border:1px solid rgba(137,190,186,.16)}
+  .cr-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .cr-role{font-family:'Ubuntu';font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+  .cr-text h3{font-family:'Ubuntu';font-weight:700;font-size:1.5rem;color:#fff;margin:8px 0 12px}
+  .cr-text p{font-size:1.02rem;color:var(--light);max-width:560px}
   @media(max-width:820px){.pillars{grid-template-columns:1fr}}
 
   /* ---------- SCHEDULE ---------- */
@@ -323,6 +321,14 @@
       <p class="reveal">As the world gets more disrupted, the people who thrive won’t be the most optimized. They’ll be the most alive: well in body and mind, genuinely connected, and making bold bets with the right people rooting for them.</p>
       <p class="end reveal">Fill your cup here. Then go be a giver.</p>
     </div>
+    <div class="creator reveal">
+      <div class="cr-photo"><img src="assets/paul.jpg" alt="Paul Davidescu, Festival Creator" loading="lazy" style="object-position:center 35%"></div>
+      <div class="cr-text">
+        <span class="cr-role">Festival Creator</span>
+        <h3>Paul Davidescu</h3>
+        <p>Paul levels up Canada’s bold, health-minded builders through a suite of brands and experiences spanning wellness, real estate, and life-design coaching. He’s the founder of Level Up Advisors — the umbrella company to Level Up Mortgages, Flow Wellness Homes, and Life Design group coaching modelled after his Grind Less Flow More podcast. A Dragons’ Den alum (Tangoo) and international retreat host with 15 years of bringing people together over food, money, and wellness, Paul created Level Up Fest to celebrate Vancouver’s healthy, bold, and good-hearted people.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -355,32 +361,6 @@
         </div>
         <h3>Financial Wellness</h3>
         <p>The right conversation opens a door a hundred cold intros never will. No one expects that overnight — but over a night like this, things start to gain momentum.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOSTS -->
-<section class="blk" id="hosts" style="border-top:1px solid rgba(137,190,186,.14)">
-  <div class="wrap">
-    <span class="kicker reveal">Your Hosts</span>
-    <h2 class="sec reveal">The People Behind the Night</h2>
-    <div class="hosts">
-      <div class="host reveal">
-        <div class="h-av"><span>PD</span></div>
-        <div class="h-body">
-          <span class="h-role">Festival Creator</span>
-          <h3>Paul Davidescu</h3>
-          <p>Paul levels up Canada’s bold, health-minded builders through a suite of brands and experiences spanning wellness, real estate, and life-design coaching. He’s the founder of Level Up Advisors — the umbrella company to Level Up Mortgages, Flow Wellness Homes, and Life Design group coaching modelled after his Grind Less Flow More podcast. A Dragons’ Den alum (Tangoo) and international retreat host with 15 years of bringing people together over food, money, and wellness, Paul created Level Up Fest to celebrate Vancouver’s healthy, bold, and good-hearted people.</p>
-        </div>
-      </div>
-      <div class="host reveal">
-        <div class="h-av"><span>JW</span></div>
-        <div class="h-body">
-          <span class="h-role">Festival Emcee</span>
-          <h3>Jordan Wade</h3>
-          <p>Jordan Wade is an award-winning Canadian broadcaster, six-time Olympic reporter, and experienced MC who thrives on bringing people together. From energizing crowds at FIFA World Cup watch parties and Canada Day celebrations to hosting the Zenzoo Festival for the past two summers, Jordan is equally at home with high-energy events and intimate, heart-centred gatherings. With warmth, humour, and authenticity, he creates meaningful connections and memorable experiences wherever he takes the mic.</p>
-        </div>
       </div>
     </div>
   </div>
