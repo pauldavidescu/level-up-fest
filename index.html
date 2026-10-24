@@ -212,6 +212,13 @@
   .pcard a.sc:hover{color:#fff}
   .pcard p a{color:var(--teal-bright);text-decoration:underline;text-underline-offset:2px}
   .pcard p a:hover{color:#fff}
+  .emcee{display:grid;grid-template-columns:minmax(210px,320px) 1fr;gap:38px;align-items:center;margin-top:12px}
+  @media(max-width:760px){.emcee{grid-template-columns:1fr;gap:24px}}
+  .em-photo{border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--night-2);border:1px solid rgba(137,190,186,.16);max-width:320px}
+  .em-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .em-role{font-family:'Ubuntu';font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+  .em-text h3{font-family:'Ubuntu';font-weight:700;font-size:1.5rem;color:#fff;margin:8px 0 12px}
+  .em-text p{font-size:1.02rem;color:var(--light);max-width:620px}
 
   /* ---------- CROWD / WHO ---------- */
   .who-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;margin-top:20px}
@@ -451,7 +458,7 @@
         </div>
       </div>
       <div class="pcard reveal">
-        <div class="ph"><img src="assets/ioan.jpg" alt="Ioan Popov" loading="lazy" style="object-position:center 28%"></div>
+        <div class="ph"><img src="assets/ioan-popov.jpg" alt="Ioan Popov" loading="lazy" style="object-position:center 25%"></div>
         <div class="pb">
           <div class="pchips"><span class="pchip r">Physical Wellness</span></div>
           <h4>Ioan Popov</h4>
@@ -463,14 +470,6 @@
         <div class="ph soon"><span>Coming Soon</span></div>
         <div class="pb"><div class="pchips"><span class="pchip r">Mental Wellness</span></div><h4>Speaker — Coming Soon</h4>
           <p>This speaker will cover a unique angle on improving your mental wellness. Their goal: prompt you to ask the right questions and share how you best approach it with your curated squad.</p></div>
-      </div>
-      <div class="pcard reveal">
-        <div class="ph"><img src="assets/jordan.jpg" alt="Jordan Wade" loading="lazy" style="object-position:center 22%"></div>
-        <div class="pb">
-          <div class="pchips"><span class="pchip r">Festival Emcee</span></div>
-          <h4>Jordan Wade</h4>
-          <p>Our host for the night — an award-winning Canadian broadcaster, six-time Olympic reporter, and seasoned MC. From FIFA World Cup watch parties to the Zenzoo Festival, Jordan brings warmth, humour, and authenticity to every room he takes the mic in.</p>
-        </div>
       </div>
     </div>
 
@@ -535,6 +534,22 @@
     <div class="photo-duo">
       <div class="photo reveal"><img src="assets/parr-cole.jpg" alt="Founders connecting at a Level Up gathering" loading="lazy"></div>
       <div class="photo reveal"><img src="assets/liz-g.jpg" alt="A guest sharing a laugh at a Level Up gathering" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMCEE -->
+<section class="blk" id="emcee" style="border-top:1px solid rgba(137,190,186,.14)">
+  <div class="wrap">
+    <span class="kicker reveal">Your Host for the Night</span>
+    <h2 class="sec reveal">The Festival Emcee</h2>
+    <div class="emcee reveal">
+      <div class="em-photo"><img src="assets/jordan-wade.jpg" alt="Jordan Wade, Festival Emcee" loading="lazy" style="object-position:center 20%"></div>
+      <div class="em-text">
+        <span class="em-role">Festival Emcee</span>
+        <h3>Jordan Wade</h3>
+        <p>Jordan Wade is an award-winning Canadian broadcaster, six-time Olympic reporter, and experienced MC who thrives on bringing people together. From energizing crowds at FIFA World Cup watch parties and Canada Day celebrations to hosting the Zenzoo Festival for the past two summers, Jordan is equally at home with high-energy events and intimate, heart-centred gatherings. With warmth, humour, and authenticity, he creates meaningful connections and memorable experiences wherever he takes the mic.</p>
+      </div>
     </div>
   </div>
 </section>
