@@ -283,6 +283,34 @@
   .faq-a{color:var(--gray);font-size:1.03rem;line-height:1.65;padding:0 2px 26px;max-width:760px}
   .faq-a a{color:var(--teal-bright);text-decoration:none}
 
+  /* highlighted "getting there" FAQ item */
+  .faq-item.faq-key{border:1px solid rgba(56,214,208,.4);border-radius:16px;
+    background:linear-gradient(180deg,rgba(56,214,208,.08),rgba(34,158,163,.03));
+    margin:10px 0;padding:0 16px}
+  .faq-item.faq-key summary{color:var(--teal-bright)}
+  .faq-item.faq-key .pin{margin-right:10px}
+  .faq-photo{display:block;margin:4px 0 6px;border-radius:12px;overflow:hidden;
+    border:1px solid rgba(56,214,208,.3);cursor:zoom-in;position:relative;line-height:0}
+  .faq-photo img{width:100%;height:auto;display:block;transition:transform .4s ease}
+  .faq-photo:hover img{transform:scale(1.02)}
+  .faq-photo .tap{position:absolute;right:12px;bottom:12px;z-index:2;
+    font-family:'Ubuntu';font-size:.78rem;letter-spacing:.06em;color:#fff;
+    background:rgba(9,13,16,.72);border:1px solid rgba(255,255,255,.25);
+    padding:7px 13px;border-radius:999px;backdrop-filter:blur(4px)}
+  .faq-note{font-size:.95rem;color:var(--light);margin-top:12px}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;
+    background:rgba(5,8,11,.92);padding:24px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:min(1200px,96vw);max-height:90vh;width:auto;height:auto;
+    border-radius:14px;box-shadow:0 30px 90px rgba(0,0,0,.6)}
+  .lb .lb-x{position:absolute;top:20px;right:24px;width:46px;height:46px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.3);background:rgba(15,20,22,.7);color:#fff;
+    font-size:26px;line-height:44px;text-align:center;cursor:pointer}
+  .lb .lb-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;
+    font-family:'Ubuntu';font-size:.95rem;color:var(--light);letter-spacing:.02em;padding:0 20px}
+
   /* ---------- SIGNUP ---------- */
   .signup{position:relative;overflow:hidden;background:
       radial-gradient(80% 120% at 20% 10%,rgba(34,158,163,.4),transparent 55%),
@@ -559,6 +587,9 @@
     <span class="kicker reveal">Good to Know</span>
     <h2 class="sec reveal">Frequently Asked Questions</h2>
     <div class="faq">
+      <details class="faq-item faq-key reveal" open><summary><span class="pin">📍</span>Where do I park, and how do I get in?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a"><strong style="color:#fff">On weekends the entire parking lot right outside the venue is free</strong> — just pull in. Then head straight for the <strong style="color:var(--teal-bright)">blue door</strong>; that’s the entrance. Here’s exactly what you’ll be looking for when you arrive:
+        <a class="faq-photo" href="assets/werklab-entrance-night.jpg" data-cap="Werklab · 1275 Venables St — free weekend parking in the lot, enter through the blue door."><img src="assets/werklab-entrance-night.jpg" alt="Night view of the Werklab parking lot with the blue entrance door lit up and a line forming" loading="lazy"><span class="tap">Tap to enlarge ⤢</span></a>
+        <div class="faq-note">Werklab · 1275 Venables St, East Vancouver. Look for the lit <strong style="color:var(--teal-bright)">blue door</strong> — if there’s a small line, you’re in the right spot.</div></div></details>
       <details class="faq-item reveal"><summary>Is there a bar?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">Yes — we’ll serve a limited quantity of wellness-focused alcoholic and non-alcoholic drinks. If you’re picky about what you drink, bring your own and pop it in our fridge (just be open to sharing, or to someone mixing your bottle up with theirs).</div></details>
       <details class="faq-item reveal"><summary>Is there food?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">Yep — we’ll have healthy snacks to keep you fuelled through the night, but we definitely recommend grabbing an early dinner. Want to join some of the attendees beforehand at Superflux Beer Company from 5:00–6:45 PM? Text Paul at <a href="tel:+16048093188">604-809-3188</a> to RSVP.</div></details>
       <details class="faq-item reveal"><summary>Do I need to know anyone?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><div class="faq-a">To buy a ticket, you need to be referred — we’ve carefully curated the event to match the right people up and make sure we have the right people in the room.</div></details>
@@ -624,6 +655,11 @@
   </div>
 </footer>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Parking and entrance photo">
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <img id="lb-img" src="" alt="Werklab parking and blue-door entrance at night">
+  <div class="lb-cap" id="lb-cap"></div>
+</div>
 <script>
   // Scroll reveal
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
@@ -635,6 +671,14 @@
     navToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',o)});
     navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');navToggle.setAttribute('aria-expanded','false')}));
   }
+
+  // Lightbox for FAQ photo
+  const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img'),lbCap=document.getElementById('lb-cap');
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+  document.querySelectorAll('.faq-photo').forEach(a=>{
+    a.addEventListener('click',e=>{e.preventDefault();lbImg.src=a.getAttribute('href');lbCap.textContent=a.dataset.cap||'';lb.classList.add('open');document.body.style.overflow='hidden'});
+  });
+  if(lb){lb.addEventListener('click',closeLb);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});}
 
 </script>
 </body>
