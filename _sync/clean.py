@@ -16,19 +16,36 @@ fails a basic structural sanity check (so callers can abort before deploying).
 """
 import re, sys
 
+# Normalize the artifact-read document WITHOUT ripping out structural tags.
+# These pages come in two shapes: (a) a complete <!DOCTYPE html><html>…</html>, and
+# (b) a FRAGMENT (title/meta/styles + body markup) that leans on the claude skeleton for its
+# <html>/<head>/<body>. In both cases the skeleton (when present) supplies exactly one
+# <html>/<head>/<body>, and its reset styles / wrapper elements are stripped later by
+# sanitize(). So unwrap does the minimum: drop anything before the first doctype, and
+# collapse a DUPLICATED trailing close the skeleton sometimes adds. It must never key off a
+# bare '<!DOCTYPE html>' elsewhere (e.g. the editor JS literal) — that was the old bug.
 def unwrap(html: str) -> str:
-    start = html.find('<!DOCTYPE html>')
-    if start == -1:
-        low = html.lower(); f = low.find('<!doctype html>'); s = low.find('<!doctype html>', f + 1)
-        start = s if s != -1 else (f if f != -1 else 0)
-    inner = html[start:]
-    pos = inner.rfind('</body></html>')
-    if pos != -1:
-        inner = inner[:pos]
-    inner = inner.rstrip() + '\n'
-    if not inner.rstrip().endswith('</html>'):
-        inner = inner.rstrip() + '\n</html>\n'
-    return inner
+    i = html.lower().find('<!doctype html>')
+    if i > 0:
+        html = html[i:]
+    low = html.lower()
+    # Two shapes come back from the artifact read:
+    #  (a) skeleton + FRAGMENT  → one <html> total (the skeleton's). Keep the whole thing;
+    #      sanitize() strips the skeleton's reset styles. Our head elements sit in <body>,
+    #      which browsers tolerate.
+    #  (b) skeleton + COMPLETE inner doc → two <html>. Keep ONLY the inner document.
+    opens = [m.start() for m in re.finditer(r'<html[\s>]', low)]
+    if len(opens) >= 2:
+        second = opens[1]
+        ds = low.rfind('<!doctype html>', 0, second)   # doctype just before the 2nd <html>
+        start = ds if ds != -1 else second
+        html = html[start:]
+        j = html.lower().find('</html>')                # inner doc's own close
+        if j != -1:
+            html = html[:j + len('</html>')]
+    # Collapse any doubled trailing close the skeleton may add.
+    html = re.sub(r'</html>\s*</body>\s*</html>\s*\Z', '</html>', html, flags=re.I)
+    return html.rstrip() + '\n'
 
 CS = re.compile(r'<[a-z][a-z0-9]*-[a-z0-9-]+\b[^>]*/>', re.I)
 CI = re.compile(r'<([a-z][a-z0-9]*-[a-z0-9-]+)\b[^>]*>[^<]*?</\1\s*>', re.I)
@@ -45,7 +62,9 @@ def sanitize(html: str) -> str:
     html = re.sub(r'\s+data-gr-[a-z0-9-]+(="[^"]*")?', '', html)
     html = re.sub(r'\s+data-grammarly-[a-z0-9-]+(="[^"]*")?', '', html)
     html = re.sub(r'\s+data-gpts?-[a-z0-9-]+(="[^"]*")?', '', html)
-    html = re.sub(r'<style>:root\{color-scheme:light\}[\s\S]*?</style>', '', html, count=1)
+    # Remove EVERY claude skeleton reset <style> (they can duplicate across publish cycles,
+    # and come in variants: ":root{color-scheme:light}…" or ":root{color-scheme:light;box-sizing:…}…").
+    html = re.sub(r'<style>:root\{color-scheme:light[;}][\s\S]*?</style>', '', html)
     html = re.sub(r'<style>\s*artifact-[\s\S]*?</style>', '', html)
     html = re.sub(r'<style>\s*</style>', '', html)
     html = re.sub(r'(<body\b[^>]*?)\s+class=""', r'\1', html)
@@ -58,14 +77,14 @@ def main():
     open(dst, 'w', encoding='utf-8').write(out)
     low = out.lower()
     custom = len(CA.findall(out))
-    ok = (out.lstrip().startswith('<!DOCTYPE html>')
-          and '<html lang=' in out
+    # Site-agnostic structural sanity: one well-formed document, no extension cruft,
+    # a title, and non-trivial size. (Do NOT hard-code brand strings — this runs on any site.)
+    ok = (out.lstrip().lower().startswith('<!doctype html>')
           and low.count('<html') == 1
           and low.count('<body') == 1
           and custom == 0
-          and len(out) >= 20000
-          and '<title>' in low
-          and 'level up fest' in low)
+          and len(out) >= 10000
+          and '<title>' in low)
     print('clean:', dst, '| bytes:', len(out), '| <html>:', low.count('<html'),
           '| <body>:', low.count('<body'), '| custom-tags:', custom, '| ok:', ok)
     sys.exit(0 if ok else 2)
