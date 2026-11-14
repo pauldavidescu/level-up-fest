@@ -358,6 +358,40 @@
   .foot-right a:hover{color:var(--teal-bright)}
   .foot-legal{max-width:var(--maxw);margin:34px auto 0;padding-top:22px;border-top:1px solid rgba(137,190,186,.1);font-size:.8rem;color:#5f6b6c;letter-spacing:.04em;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   @media(max-width:640px){.foot-right{text-align:left}}
+
+  /* ---------- in-page edit mode ---------- */
+  #lu-editbar{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:2000;display:none;
+    align-items:center;gap:10px;background:var(--night-2);color:#fff;padding:9px 12px;border-radius:14px;
+    box-shadow:0 20px 44px -14px rgba(0,0,0,.6);font-family:'Ubuntu',sans-serif;border:1px solid rgba(137,190,186,.22)}
+  body.editing #lu-editbar{display:flex}
+  #lu-editbar .st{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.86rem;padding:0 4px}
+  #lu-editbar .st .d{width:9px;height:9px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 4px rgba(56,214,208,.2);transition:transform .16s}
+  #lu-editbar .sep{width:1px;height:22px;background:rgba(255,255,255,.16)}
+  #lu-editbar button{font-family:'Ubuntu',sans-serif;font-weight:700;font-size:.82rem;border:none;border-radius:9px;padding:.52em .9em;cursor:pointer;transition:filter .15s,transform .15s;color:#fff}
+  #lu-editbar button:hover{transform:translateY(-1px);filter:brightness(1.08)}
+  #lu-editbar .b-pub{background:linear-gradient(120deg,var(--teal),var(--teal-bright));color:var(--ink)}
+  #lu-editbar .b-exp{background:rgba(255,255,255,.14)}
+  #lu-editbar .b-copy{background:#fff;color:var(--ink)}
+  #lu-editbar .b-exit{background:rgba(255,255,255,.14)}
+  #lu-launch{position:fixed;right:20px;bottom:22px;z-index:1999;display:none;align-items:center;gap:7px;
+    background:var(--night-2);color:#fff;font-family:'Ubuntu',sans-serif;font-weight:700;font-size:.84rem;
+    border:1px solid rgba(137,190,186,.24);border-radius:999px;padding:.6em 1.05em;cursor:pointer;
+    box-shadow:0 16px 36px -14px rgba(0,0,0,.55);transition:transform .15s,filter .15s}
+  #lu-launch:hover{transform:translateY(-2px)}
+  #lu-launch .pen{width:16px;height:16px;display:inline-flex}
+  body.editing #lu-launch{display:none!important}
+  body.editing [contenteditable="true"]{outline:1.5px dashed rgba(137,190,186,.5);outline-offset:4px;border-radius:4px}
+  body.editing [contenteditable="true"]:hover{outline-color:var(--teal)}
+  body.editing [contenteditable="true"]:focus{outline:2px solid var(--teal-bright);outline-offset:4px;background:rgba(56,214,208,.06)}
+  body.editing section,body.editing footer{position:relative}
+  .lu-handle{display:none}
+  body.editing .lu-handle{display:inline-flex;align-items:center;gap:5px;position:absolute;top:10px;right:10px;z-index:60;
+    background:var(--night-2);color:#fff;font-family:'Ubuntu',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.06em;
+    padding:.4em .7em;border-radius:7px;cursor:grab;opacity:.5;user-select:none;border:1px solid rgba(137,190,186,.3)}
+  body.editing .lu-handle:hover{opacity:1}
+  body.editing section.lu-drag,body.editing footer.lu-drag{opacity:.35}
+  body.editing section.lu-over,body.editing footer.lu-over{outline:2px solid var(--amber);outline-offset:-2px}
+  @media print{#lu-editbar,.lu-handle,#lu-launch{display:none!important}}
 </style>
 </head>
 <body>
@@ -555,9 +589,9 @@
         <h2 class="sec" style="margin-bottom:26px">Meet Your Kind of People.</h2>
         <p>This is a night for people who train hard, work harder, and play the hardest — without living for the next night out — because playing with <strong>the right people</strong> fuels your weekday’s success.</p>
         <ul class="who-list">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6d0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Founders and self-employed builders who take care of themselves</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6d0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Coaches, wellness experts, and leaders in professional services who love a real night out</li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6d0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Anyone pursuing more freedom — in their body, their mind, and their time</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6d0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span class="txt">Founders and self-employed builders who take care of themselves</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6d0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span class="txt">Coaches, wellness experts, and leaders in professional services who love a real night out</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38d6d0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span class="txt">Anyone pursuing more freedom — in their body, their mind, and their time</span></li>
         </ul>
       </div>
       <div class="who-card reveal">
@@ -709,6 +743,181 @@
   });
   if(lb){lb.addEventListener('click',closeLb);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});}
 
+</script>
+<!-- ============ IN-PAGE EDIT MODE ============ -->
+<!-- Add #edit to the URL (or press Cmd/Ctrl+E) to edit this page in the browser. -->
+<script>
+(function(){
+  var body=document.body, STORE='lufest-draft-v1', restored=false;
+  var SEL=[
+    '.eyebrow','.title .line','.hero-lede p','.hero-meta .k','.hero-meta .v',
+    '.kicker','.sec','.signup h2','.sec-intro','.lead',
+    '.slot .time','.slot .body h3','.slot .body p','.lineup-sub',
+    '.pb h4','.pb p','.pchip','.about',
+    '.who-copy p','.who-list li .txt','.stat .n','.stat .lbl',
+    '.em-role','.em-text h3','.em-text p',
+    '.faq summary','.faq-a',
+    '.ccard h3','.ccard p',
+    '.signup p','.cap-note','.foot-tag'
+  ].join(',');
+  var eds=[];
+  function secList(){ return [].slice.call(document.querySelectorAll('body > section, body > footer')); }
+
+  function initIds(){
+    secList().forEach(function(s,i){ if(!s.dataset.luSid) s.dataset.luSid = s.id ? 'id-'+s.id : 'S'+i; });
+    var cand=[].slice.call(document.querySelectorAll(SEL)).filter(function(el){
+      if(el.closest('#lu-editbar')) return false;
+      if(el.querySelector('svg') && el.tagName!=='SUMMARY') return false;   // protect icon rows, but FAQ summaries keep their chevron and stay editable
+      return true;
+    });
+    cand.forEach(function(el){
+      if(cand.some(function(o){return o!==el && (el.contains(o)||o.contains(el));})) {
+        if(cand.some(function(o){return o!==el && el.contains(o);})) return;
+      }
+      el.dataset.luId='E'+eds.length; eds.push(el);
+    });
+  }
+
+  function save(){
+    try{
+      var content={}; eds.forEach(function(el){ content[el.dataset.luId]=el.innerHTML; });
+      var order=secList().map(function(s){return s.dataset.luSid;});
+      localStorage.setItem(STORE, JSON.stringify({v:1,order:order,content:content,at:Date.now()}));
+      flash();
+    }catch(e){}
+  }
+  function restore(){
+    try{
+      var raw=localStorage.getItem(STORE); if(!raw) return;
+      var d=JSON.parse(raw);
+      if(d.content){ Object.keys(d.content).forEach(function(id){ var el=document.querySelector('[data-lu-id="'+id+'"]'); if(el) el.innerHTML=d.content[id]; }); }
+      if(d.order){ var ref=document.querySelector('#lu-editbar'); d.order.forEach(function(sid){ var s=document.querySelector('[data-lu-sid="'+sid+'"]'); if(s) body.insertBefore(s, ref); }); }
+    }catch(e){}
+  }
+
+  var MODE='local';        // 'live' when hosted on claude.ai as owner, else 'local'
+  var artCap=null;          // resolved artifact capability namespace (owner only)
+
+  function buildHTML(){
+    var clone=document.documentElement.cloneNode(true);
+    var bar=clone.querySelector('#lu-editbar'); if(bar) bar.remove();
+    var la=clone.querySelector('#lu-launch'); if(la) la.remove();
+    [].slice.call(clone.querySelectorAll('.lu-handle')).forEach(function(h){h.remove();});
+    [].slice.call(clone.querySelectorAll('[contenteditable]')).forEach(function(e){e.removeAttribute('contenteditable');});
+    var cb=clone.querySelector('body'); if(cb) cb.classList.remove('editing');
+    return '<!DOCTYPE html>\n'+clone.outerHTML;
+  }
+  function downloadHTML(){
+    var html=buildHTML();
+    try{
+      var blob=new Blob([html],{type:'text/html'});
+      var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='levelup-fest.html';
+      document.body.appendChild(a); a.click(); setTimeout(function(){a.remove();URL.revokeObjectURL(a.href);},100);
+    }catch(e){ console.warn('download failed',e); }
+    return html;
+  }
+  function publishLive(btn){
+    var reset=function(){ if(btn) btn.textContent='⬆ Publish live'; };
+    if(!artCap){ downloadHTML(); return; }
+    if(btn) btn.textContent='Publishing…';
+    try{
+      artCap.publish(buildHTML()).then(function(){
+        try{ localStorage.removeItem(STORE); }catch(e){}
+        if(btn){ btn.textContent='✓ Published. It’s live'; setTimeout(reset,1800); }
+      }).catch(function(err){
+        if(btn){ btn.textContent=(err&&err.code==='conflict')?'Reloaded to newest':'Publish failed. Try again'; }
+        setTimeout(reset,2200);
+      });
+    }catch(e){ if(btn) btn.textContent='Publish failed. Try again'; setTimeout(reset,2200); }
+  }
+  function exportHTML(){ return MODE==='live'?publishLive():downloadHTML(); }
+  function copyText(){
+    var lines=[]; eds.forEach(function(el){ var t=(el.innerText||'').trim().replace(/\s+/g,' '); if(t) lines.push('• '+t); });
+    var txt=lines.join('\n');
+    try{ navigator.clipboard.writeText(txt); }catch(e){}
+    return txt;
+  }
+
+  // ----- drag to reorder sections -----
+  var dragSid=null;
+  function wireSection(s){
+    if(s.dataset.luWired) return; s.dataset.luWired='1';
+    var h=document.createElement('div'); h.className='lu-handle'; h.textContent='⇅ Move'; h.setAttribute('draggable','true');
+    h.addEventListener('dragstart',function(e){ dragSid=s.dataset.luSid; s.classList.add('lu-drag'); e.dataTransfer.effectAllowed='move'; try{e.dataTransfer.setData('text/plain',dragSid);}catch(_){ } });
+    h.addEventListener('dragend',function(){ s.classList.remove('lu-drag'); dragSid=null; secList().forEach(function(x){x.classList.remove('lu-over');}); save(); });
+    s.appendChild(h);
+    s.addEventListener('dragover',function(e){ if(!dragSid)return; e.preventDefault(); s.classList.add('lu-over'); });
+    s.addEventListener('dragleave',function(){ s.classList.remove('lu-over'); });
+    s.addEventListener('drop',function(e){ if(!dragSid)return; e.preventDefault(); s.classList.remove('lu-over');
+      var d=document.querySelector('[data-lu-sid="'+dragSid+'"]'); if(!d||d===s)return;
+      var r=s.getBoundingClientRect(); var after=(e.clientY-r.top)>r.height/2;
+      body.insertBefore(d, after? s.nextSibling : s);
+    });
+  }
+
+  // ----- toolbar -----
+  function buildBar(){
+    var bar=document.createElement('div'); bar.id='lu-editbar';
+    var primary = MODE==='live'
+      ? '<button class="b-pub">⬆ Publish live</button>'
+      : '<button class="b-exp">⤓ Export page</button>';
+    bar.innerHTML='<span class="st"><span class="d"></span>Editing: click any text to change it</span>'+
+      '<span class="sep"></span>'+
+      primary+
+      '<button class="b-copy">⧉ Copy text</button>'+
+      '<span class="sep"></span>'+
+      '<button class="b-exit">Done</button>';
+    body.appendChild(bar);
+    var pub=bar.querySelector('.b-pub'); if(pub) pub.onclick=function(){ publishLive(this); };
+    var exp=bar.querySelector('.b-exp'); if(exp) exp.onclick=downloadHTML;
+    bar.querySelector('.b-copy').onclick=function(){ copyText(); var b=this; b.textContent='✓ Copied'; setTimeout(function(){b.textContent='⧉ Copy text';},1300); };
+    bar.querySelector('.b-exit').onclick=function(){ setEdit(false); };
+  }
+  function buildLauncher(){
+    var l=document.createElement('button'); l.id='lu-launch';
+    l.innerHTML='<span class="pen">✎</span> Edit page';
+    l.onclick=function(){ setEdit(true); };
+    body.appendChild(l);
+    l.style.display='flex';
+  }
+  function flash(){ var st=document.querySelector('#lu-editbar .st .d'); if(!st)return; st.style.transform='scale(1.8)'; setTimeout(function(){st.style.transform='';},160); }
+
+  function setEdit(on){
+    body.classList.toggle('editing',on);
+    eds.forEach(function(el){ if(on) el.setAttribute('contenteditable','true'); else el.removeAttribute('contenteditable'); });
+    if(on && !restored){ restore(); restored=true; }
+  }
+
+  function enableEditor(){
+    initIds(); buildBar(); buildLauncher(); secList().forEach(wireSection);
+    document.addEventListener('click',function(e){
+      if(!body.classList.contains('editing'))return;
+      var a=e.target.closest('a'); if(a) e.preventDefault();
+      var s=e.target.closest('summary'); if(s) e.preventDefault();
+    },true);
+    var t; document.addEventListener('input',function(){ if(!body.classList.contains('editing'))return; clearTimeout(t); t=setTimeout(save,500); });
+    document.addEventListener('keydown',function(e){ if((e.metaKey||e.ctrlKey)&&(e.key==='e'||e.key==='E')){ e.preventDefault(); setEdit(!body.classList.contains('editing')); } });
+    if(/edit/i.test(location.hash)||/(?:^|[?&])edit/i.test(location.search)) setEdit(true);
+    window.addEventListener('hashchange',function(){ if(/edit/i.test(location.hash)) setEdit(true); });
+    window.luExport=exportHTML; window.luPublish=function(){return publishLive();}; window.luDownload=downloadHTML; window.luEdit=setEdit;
+  }
+  function init(){
+    var isLocal = location.protocol==='file:' || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+    var started=false;
+    function go(mode){ if(started)return; started=true; MODE=mode; enableEditor(); }
+    if(window.claude && typeof claude.use==='function'){
+      var settled=false;
+      try{
+        claude.use('artifact').then(function(cap){ settled=true; if(cap){ artCap=cap; go('live'); } else if(isLocal){ go('local'); } }).catch(function(){ if(isLocal) go('local'); });
+      }catch(e){ if(isLocal) go('local'); }
+      if(isLocal) setTimeout(function(){ if(!settled) go('local'); },400);
+    } else if(isLocal){
+      go('local');
+    }
+    // A public visitor on the live URL has no 'artifact' capability -> no editor, no toolbar.
+  }
+  if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded',init);
+})();
 </script>
 </body>
 </html>
